@@ -19,6 +19,10 @@ export default {
 
 <style lang="less" scope>
 
+.home {
+    overflow: hidden;
+}
+
 h1 {
     margin-top: 50%;
 }

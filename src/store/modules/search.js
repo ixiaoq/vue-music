@@ -2,7 +2,7 @@ import { searchMusic, searchMusicUrl, searchMusicLyric } from "../../api/api"
 
 const state = {
     searchMusicList: [],
-    currentMusicUrl: "123",
+    currentMusicUrl: "void",
     currentMusiclyric: []
 }
 

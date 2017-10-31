@@ -39,7 +39,7 @@ export default {
 
 .search-music-list {
     padding: 6px 10px;
-    margin: 40px 0 35px;
+    margin: 40px 0 32px;
     text-align: left;
 }
 
