@@ -9,13 +9,12 @@
 
     export default {
         name: "search",
-        props: ["currentMusicUrl"],
         computed: {
-        ...mapState({
-            currentMusicUrl (state) {
-            return state.search.currentMusicUrl;
-            }
-        })
+            ...mapState({
+                currentMusicUrl (state) {
+                    return state.search.currentMusicUrl;
+                }
+            })
         }
     }
 </script>
@@ -23,7 +22,7 @@
 <style lang="less" scope>
 
 .audio {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;

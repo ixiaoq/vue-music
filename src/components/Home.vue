@@ -1,18 +1,21 @@
 <template>
   <div class="home">
-      <h1>{{ welcomeMsg }}</h1>
+      <Rank/>
   </div>
 </template>
 
 <script>
-import axios from "axios"
+import Rank from './home/Rank'
 
 export default {
-    name: "home",
+    name: "Home",
     data () {
         return {
             welcomeMsg: "welcome to you",
         }
+    },
+    components: {
+        Rank
     }
 }
 </script>
@@ -20,7 +23,8 @@ export default {
 <style lang="less" scope>
 
 .home {
-    overflow: hidden;
+    height: 100%;
+    overflow-y: auto;
 }
 
 h1 {

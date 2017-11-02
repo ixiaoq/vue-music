@@ -15,7 +15,7 @@
 import { mapGetters } from "vuex"
 
 export default {
-    name: "MusicList",
+    name: "SearchList",
     data () {
         return {
             showTotal: 10,
@@ -38,9 +38,10 @@ export default {
 <style lang="less" scope>
 
 .search-music-list {
-    padding: 6px 10px;
-    margin: 40px 0 32px;
+    height: 100%;
+    padding: 46px 10px 32px;
     text-align: left;
+    overflow-y: auto;
 }
 
 ul {

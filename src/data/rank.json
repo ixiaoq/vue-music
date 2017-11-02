@@ -1,0 +1,283 @@
+{
+    "code": 0,
+    "subcode": 0,
+    "message": "",
+    "default": 0,
+    "data": {
+        "topList": [
+            {
+                "id": 4,
+                "listenCount": 19900000,
+                "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_4_300_206379449.jpg",
+                "songList": [
+                    {
+                        "singername": "薛之谦",
+                        "songname": "别"
+                    },
+                    {
+                        "singername": "林俊杰",
+                        "songname": "至少还有你 (Live)"
+                    },
+                    {
+                        "singername": "CG",
+                        "songname": "文爱"
+                    }
+                ],
+                "topTitle": "广汽传祺·巅峰榜·流行指数",
+                "type": 0
+            },
+            {
+                "id": 26,
+                "listenCount": 19100000,
+                "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_26_300_205004626.jpg",
+                "songList": [
+                    {
+                        "singername": "李荣浩",
+                        "songname": "后羿"
+                    },
+                    {
+                        "singername": "薛之谦",
+                        "songname": "别"
+                    },
+                    {
+                        "singername": "PRC 巴音汗",
+                        "songname": "80000 ! (prod.by DROYC原声版)"
+                    }
+                ],
+                "topTitle": "巅峰榜·热歌",
+                "type": 0
+            },
+            {
+                "id": 27,
+                "listenCount": 15800000,
+                "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_27_300_206379449.jpg",
+                "songList": [
+                    {
+                        "singername": "薛之谦",
+                        "songname": "别"
+                    },
+                    {
+                        "singername": "李荣浩",
+                        "songname": "后羿"
+                    },
+                    {
+                        "singername": "陈小春",
+                        "songname": "贪玩传世"
+                    }
+                ],
+                "topTitle": "巅峰榜·新歌",
+                "type": 0
+            },
+            {
+                "id": 30,
+                "listenCount": 9300000,
+                "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_30_300_205456396.jpg",
+                "songList": [
+                    {
+                        "singername": "林俊杰",
+                        "songname": "至少还有你 (Live)"
+                    },
+                    {
+                        "singername": "林忆莲",
+                        "songname": "绿光 (Live)"
+                    },
+                    {
+                        "singername": "陈卓璇",
+                        "songname": "爱笑的眼睛 (Live)"
+                    }
+                ],
+                "topTitle": "巅峰榜·梦想的声音",
+                "type": 0
+            },
+            {
+                "id": 28,
+                "listenCount": 16027112,
+                "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_28_300_204841220.jpg",
+                "songList": [
+                    {
+                        "singername": "白小白",
+                        "songname": "最美分离"
+                    },
+                    {
+                        "singername": "校长",
+                        "songname": "过得好吗"
+                    },
+                    {
+                        "singername": "李朝/王圣锋",
+                        "songname": "情话微甜"
+                    }
+                ],
+                "topTitle": "巅峰榜·网络歌曲",
+                "type": 0
+            },
+            {
+                "id": 5,
+                "listenCount": 7620360,
+                "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_5_300_205004626.jpg",
+                "songList": [
+                    {
+                        "singername": "李荣浩",
+                        "songname": "后羿"
+                    },
+                    {
+                        "singername": "薛之谦",
+                        "songname": "别"
+                    },
+                    {
+                        "singername": "庄心妍",
+                        "songname": "最美的瞬间"
+                    }
+                ],
+                "topTitle": "巅峰榜·内地",
+                "type": 0
+            },
+            {
+                "id": 6,
+                "listenCount": 4439760,
+                "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_6_300_204538109.jpg",
+                "songList": [
+                    {
+                        "singername": "薛凯琪/方大同",
+                        "songname": "天生一对"
+                    },
+                    {
+                        "singername": "张韶涵",
+                        "songname": "传世之爱"
+                    },
+                    {
+                        "singername": "吴映洁 GEmma",
+                        "songname": "Knock Knock Knock"
+                    }
+                ],
+                "topTitle": "巅峰榜·港台",
+                "type": 0
+            },
+            {
+                "id": 3,
+                "listenCount": 11086320,
+                "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_3_300_205127505.jpg",
+                "songList": [
+                    {
+                        "singername": "Alan Walker/Noah Cyrus/Digital Farm Animals",
+                        "songname": "All Falls Down"
+                    },
+                    {
+                        "singername": "Selena Gomez/Marshmello",
+                        "songname": "Wolves"
+                    },
+                    {
+                        "singername": "Kelly Clarkson",
+                        "songname": "Heat"
+                    }
+                ],
+                "topTitle": "巅峰榜·欧美",
+                "type": 0
+            },
+            {
+                "id": 16,
+                "listenCount": 7154740,
+                "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_16_300_204816309.jpg",
+                "songList": [
+                    {
+                        "singername": "에픽하이 (Epik High)",
+                        "songname": "PEOPLE SCARE ME (난 사람이 제일 무서워)"
+                    },
+                    {
+                        "singername": "MIXNINE (믹스나인)",
+                        "songname": "JUST DANCE"
+                    },
+                    {
+                        "singername": "에픽하이 (Epik High)/아이유 (IU)",
+                        "songname": "LOVE STORY (연애소설)"
+                    }
+                ],
+                "topTitle": "巅峰榜·韩国",
+                "type": 0
+            },
+            {
+                "id": 17,
+                "listenCount": 1518420,
+                "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_17_300_203820499.jpg",
+                "songList": [
+                    {
+                        "singername": "田口淳之介",
+                        "songname": "DIMENSION"
+                    },
+                    {
+                        "singername": "H△G (ハグ)",
+                        "songname": "アイロニ (反语)"
+                    },
+                    {
+                        "singername": "LiSA (織部里沙)",
+                        "songname": "Catch the Moment"
+                    }
+                ],
+                "topTitle": "巅峰榜·日本",
+                "type": 0
+            },
+            {
+                "id": 201,
+                "listenCount": 291520,
+                "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/20150127163830.jpg",
+                "songList": [
+                    {
+                        "singername": "大壮",
+                        "songname": "我们不一样"
+                    },
+                    {
+                        "singername": "MC七星",
+                        "songname": "佛说"
+                    },
+                    {
+                        "singername": "张艺兴",
+                        "songname": "羊 (SHEEP)"
+                    }
+                ],
+                "topTitle": "巅峰榜·MV",
+                "type": 0
+            },
+            {
+                "id": 52,
+                "listenCount": 1770090,
+                "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_52_300_204871790.jpg",
+                "songList": [
+                    {
+                        "singername": "阿力普/氕",
+                        "songname": "抓不住 (Remix)"
+                    },
+                    {
+                        "singername": "彭坦",
+                        "songname": "笑笑"
+                    },
+                    {
+                        "singername": "VAVA/Ty./王倩倩",
+                        "songname": "我的新衣"
+                    }
+                ],
+                "topTitle": "巅峰榜·腾讯音乐人原创榜",
+                "type": 0
+            },
+            {
+                "id": 36,
+                "listenCount": 4145500,
+                "picUrl": "http://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_36_300_201816159.jpg",
+                "songList": [
+                    {
+                        "singername": "郑阳亭",
+                        "songname": "你那么爱他"
+                    },
+                    {
+                        "singername": "申静雯",
+                        "songname": "告白气球"
+                    },
+                    {
+                        "singername": "胡赟兆",
+                        "songname": "啷个哩个啷"
+                    }
+                ],
+                "topTitle": "巅峰榜·K歌金曲",
+                "type": 0
+            }
+        ]
+    }
+}
