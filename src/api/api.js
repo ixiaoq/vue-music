@@ -1,3 +1,4 @@
+
 import axios from "axios"
 
 const proxy = (url, data) => {
@@ -12,8 +13,8 @@ const proxy = (url, data) => {
 
 // 搜索歌
 export function searchMusic(msg) {
-    var url = "https://api.imjad.cn/cloudmusic/";
-    var data = {
+    let url = "https://api.imjad.cn/cloudmusic/";
+    let data = {
         type: "search",
         s: msg
     };
@@ -22,8 +23,8 @@ export function searchMusic(msg) {
 
 // 根据歌曲id， 获取歌曲url
 export function searchMusicUrl(id) {
-    var url = "https://api.imjad.cn/cloudmusic/";
-    var data = {
+    let url = "https://api.imjad.cn/cloudmusic/";
+    let data = {
         type: "song",
         id: id
     };
@@ -32,8 +33,8 @@ export function searchMusicUrl(id) {
 
 // 获取歌词
 export function searchMusicLyric(id) {
-    var url = "https://api.imjad.cn/cloudmusic/";
-    var data = {
+    let url = "https://api.imjad.cn/cloudmusic/";
+    let data = {
         type: "lyric",
         id: id
     };
@@ -47,11 +48,25 @@ export function searchMusicLyric(id) {
 // 排行榜
 // https://c.y.qq.com/v8/fcg-bin/fcg_myqq_toplist.fcg?format=jsonp&g_tk=5381&uin=0&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&_=1509627514913&jsonpCallback=_jsonp14v3zs0gjjihttps://c.y.qq.com/v8/fcg-bin/fcg_myqq_toplist.fcg?format=jsonp&g_tk=5381&uin=0&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&_=1509627514913&jsonpCallback=_jsonp14v3zs0gjji
 
+// jsonp 请求
 
+// 排行榜
+export function getMusicRank() {
+    let url = "https://c.y.qq.com/v8/fcg-bin/fcg_myqq_toplist.fcg";
+    let data = {
+        format: 'jsonp',
+        g_tk: 5381,
+        uin: 0,
+        inCharset: 'utf-8',
+        outCharset: 'utf-8',
+        notice: 0,
+        platform: 'h5',
+        needNewCode: 1,
+        _: new Date().getTime()
+    };
+    return proxyJsonp(url, data)
+}
 
-/**
- * Created by sioxa on 2016/12/25 0025.
- */
 // export default {
 //     rank_songs: {
 //       url: 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg',
@@ -243,3 +258,67 @@ export function searchMusicLyric(id) {
 //   }
   
 
+const jsonp = function (options) {
+    if (!options.url) {
+        throw new Error("参数url不合法");
+    }
+    let callback = options.callback || "callback",  //回调参数，如： ?callback=jquery123456
+        callbackName = options.callbackName,        //回调参数，如： ?callback=jquery123456
+        data = options.data || {},                  //参数
+        time = options.timeout || 10000,            //超时时间
+        success = options.success,                  //成功函数
+        fail = options.fail;                        //失败函数
+
+    //格式化参数
+    function formatParams(obj) {
+        if (typeof obj === "string") return obj;
+        var arr = [];
+        for (var name in obj) {
+            arr.push(encodeURIComponent(name) + '=' + encodeURIComponent(obj[name]));
+        }
+        return arr.join('&');
+    }
+
+    //创建 script 标签
+    let oHead = document.getElementsByTagName('head')[0] || document.head;
+    callbackName = callbackName || ('jsonp_' + Math.random()).replace("\.", "");
+    data[callback] = callbackName;
+    let params = formatParams(data);
+
+    let oScript = document.createElement('script');//发送请求
+    oScript.type = 'text/javascript';
+    oScript.async = true;
+    oScript.src = options.url + (options.url.indexOf("?") == -1 ? '?' : "&") + params;
+    log.info(oScript.src);
+    //创建jsonp回调函数
+    window[callbackName] = function (json) {
+        oHead.removeChild(oScript);
+        clearTimeout(oScript.timer);
+        window[callbackName] = null;
+        success && success(json);
+    };
+
+    // 发送
+    oHead.appendChild(oScript);
+
+    //超时处理
+    if (time) {
+        oScript.timer = setTimeout(function () {
+            window[callbackName] = function () { };
+            oHead.removeChild(oScript);
+            fail && fail({ errCode: 1, errMsg: "请求超时!" });
+        }, time);
+    }
+};
+
+const proxyJsonp = (url, data) => {
+    return new Promise((resolve, reject) => {
+        jsonp({
+            url: url,
+            data: data,
+            success: data => {
+                resolve(data);
+            } 
+        })
+    })
+};
