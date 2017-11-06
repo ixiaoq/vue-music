@@ -43,6 +43,7 @@
 html, body {
   font-size: 14px;
   height: 100%;
+  width: 100%;
 }
 body {
   max-width: 750px;

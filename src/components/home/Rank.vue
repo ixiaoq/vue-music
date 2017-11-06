@@ -11,17 +11,15 @@
 export default {
   name: "rank",
 
-  data () {
+  data() {
     return {
       rankList: require("../../data/rank.json").data.topList
-    }
+    };
   }
-}
-
+};
 </script>
 
 <style lang="less" scope>
-
 .rank {
   text-align: left;
 
@@ -35,5 +33,4 @@ export default {
     width: 100%;
   }
 }
-
 </style>
