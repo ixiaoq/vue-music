@@ -1,10 +1,13 @@
-# vue-web
+# vue-musci
 
 > A Vue.js project
 
 ## Build Setup
 
 ``` bash
+# clong
+git clone https://github.com/ixiaoq/vue-music.git
+
 # install dependencies
 npm install
 
