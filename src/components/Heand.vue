@@ -1,18 +1,19 @@
 <template>
     <div class="head-search">
-        <span @click="back">后退</span>
-        <input v-model="searchMessage" placeholder="歌曲名">
-        <span @click="search(searchMessage)">搜索</span>
+        <span v-show="isback" @click="back">后退</span>
+        <input @focus="focus" @blur="blur" v-model="searchMessage" placeholder="歌曲/歌手/专辑" >
+        <!-- <span v-show="isSearch" @click="search(searchMessage)">搜索</span> -->
     </div>
 </template>
 
 <script>
-import axios from "axios"
 
 export default {
     name: "MyHeand",
     data () {
         return {
+            isback: false,
+            isSearch: true,
             searchMessage: "",
             input: "林中鸟"
         }
@@ -25,6 +26,12 @@ export default {
         },
         back () {
             this.$router.go(-1)
+        },
+        focus () {
+            this.isSearch = true;
+        },
+        focus () {
+            this.isSearch = false;
         }
     }
 }
@@ -33,30 +40,29 @@ export default {
 <style lang="less" scope>
 
 .head-search {
+    display: flex;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 40px;
-    background: red;
-    padding: 5px 0px;
+    height: 55px;
+    padding: 6px;
+    background: white;
+    font-size: 16px;
 
     input {
-        width: 70%;
-        height: 100%;
         padding: 0 10px;
-        background: #fff;
+        background: #ddd;
         outline: none;
-        border: 1px solid #ccc;
-        border-radius: 15px;
+        border: none;
+        border-radius: 5px;
+        flex: 1;
+        font-size: 16px;
     }
 
     span {
-        display: inline-block;
-        width: 13%;
-        height: 100%;
-        padding: 5px;
-        vertical-align: top;
+        flex: 0 0 50px;
+        line-height: 43px;
     }
 }
 

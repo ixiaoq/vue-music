@@ -1,6 +1,6 @@
 
 import axios from "axios"
-import proxyJsonp from "./jsonp"
+import * as proxyJsonp from "./jsonp"
 
 const proxy = (url, data) => {
     return axios.get(url, {

@@ -3,7 +3,7 @@
     <div class="rank-item" v-for="item in rankList" :key="item.id">
       <div class="rank-img"><img :src="item.picUrl">{{ item.topTitle }}</div>
     </div>
-    {{ rankList }}
+    <!-- {{ rankList }} -->
   </div>
 </template>
 

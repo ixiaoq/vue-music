@@ -57,7 +57,7 @@ const jsonp = function (options) {
     }
 };
 
-export const proxyJsonp = (url, data) => {
+export function proxyJsonp(url, data) {
     return new Promise((resolve, reject) => {
         jsonp({
             url: url,

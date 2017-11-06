@@ -1,34 +1,81 @@
 <template>
-  <div class="home">
-      <Rank/>
+  <div class="page-home">
+    <v-search />
+		<div class="main">
+			<div class="top_scroll"></div>
+			<v-tabbar>
+				<v-tabbar-item id="recommend" title="推荐" :isActive="isActive" @changeclass="navActive"></v-tabbar-item>
+				<v-tabbar-item id="rank" title="排行榜" :isActive="!isActive" @changeclass="navActive"></v-tabbar-item>
+			</v-tabbar>
+
+			<router-view/>
+			
+			<div class="bottom_srcoll"></div>
+		</div>
   </div>
 </template>
 
 <script>
-import Rank from './home/Rank'
+import vSearch from "./home/Search";
+import vTabbar from "./home/Tabbar";
+import vTabbarItem from "./home/TabbarItem";
 
 export default {
-    name: "Home",
-    data () {
-        return {
-            welcomeMsg: "welcome to you",
-        }
-    },
-    components: {
-        Rank
+  name: "Home",
+  data() {
+    return {
+			isActive: true,
+      input: "林中鸟"
+    };
+  },
+  components: {
+		vSearch,
+		vTabbar,
+		vTabbarItem
+  },
+  methods: {
+    navActive(value) {
+			this.isActive = !value;
+			this.$router.push(id);
     }
-}
+  }
+};
 </script>
 
 <style lang="less" scope>
+.page-home {
+  height: 100%;
+	overflow-y: auto;
+	
+	.main {
+		.top_scroll {
+			height: 55px;
+		}
 
-.home {
-    height: 100%;
-    overflow-y: auto;
+		nav {
+			display: flex;
+			height: 50px;
+			line-height: 50px;
+			font-size: 16px;
+			div {
+				flex: 1;
+				a {
+					display: block;
+					position: relative;
+					color: #999;
+				}
+				a.active {
+					color: red;
+				}
+			}
+		}
+
+		.bottom_srcoll {
+			height: 40px;
+		}
+	}
+	
 }
 
-h1 {
-    margin-top: 50%;
-}
 
 </style>

@@ -1,15 +1,11 @@
 <template>
   <div id="app">
-    <my-heand></my-heand>
-    <transition>
-      <router-view/>
-    </transition>
+    <router-view/>
     <my-audio v-show="isAudio"></my-audio>
   </div>
 </template>
 
 <script>
-  import MyHeand from "./components/Heand"
   import MyAudio from "./components/audio/MyAudio"
   
   export default {
@@ -21,7 +17,6 @@
       }
     },
     components: {
-      MyHeand,
       MyAudio
     }
   }
@@ -29,31 +24,37 @@
 </script>
 
 <style lang="less">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-}
 
-html, body {
-  font-size: 14px;
-  height: 100%;
-  width: 100%;
-}
-body {
-  max-width: 750px;
-  margin: 0 auto;
-}
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+  html, body {
+    height: 100%;
+    width: 100%;
+    font-size: 14px;
+  }
+  body {
+    max-width: 750px;
+    margin: 0 auto;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
 
 </style>
