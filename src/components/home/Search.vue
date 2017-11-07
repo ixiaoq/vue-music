@@ -51,6 +51,7 @@ export default {
 		width: 100%;
 		height: 55px;
 		padding: 6px;
+		z-index: 99;
 		background: white;
 		font-size: 16px;
 

@@ -1,14 +1,27 @@
 <template>
 	<div class="recommend">
-		{{ $route.params.id }}
+		{{ name }}
+		{{ currentPage }}
 	</div>
 </template>
 
 <script>
 
 export default {
-	name: "recommend"
-	
+	name: "recommend",
+	data () {
+		return {
+			name: "page recommend"
+		}
+	},
+
+	computed: {
+		currentPage () {
+			console.log(this);
+			return this.$route.params.id
+		}
+	}
+
 };
 
 </script>

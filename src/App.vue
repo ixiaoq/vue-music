@@ -1,12 +1,13 @@
 <template>
   <div id="app">
-    <router-view/>
+    <!-- <router-view></router-view> -->
+    
     <my-audio v-show="isAudio"></my-audio>
   </div>
 </template>
 
 <script>
-  import MyAudio from "./components/audio/MyAudio"
+  import MyAudio from "./components/audio/Audio"
   
   export default {
     name: 'app',
@@ -43,6 +44,11 @@
 
   a {
     text-decoration: none;
+  }
+
+  img {
+    display: block;
+    width: 100%;
   }
 
   #app {

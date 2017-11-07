@@ -8,7 +8,7 @@
 				<v-tabbar-item id="rank" title="排行榜" :current-id="currentName"></v-tabbar-item>
 			</v-tabbar>
 
-			<router-view/>
+			<router-view></router-view>
 			
 			<div class="bottom_srcoll"></div>
 		</div>
@@ -35,6 +35,7 @@ export default {
 	},
 	
   computed: {
+		// 切换导航时, 重新计算属性
     currentName() {
 			return this.$route.params.id;
     }

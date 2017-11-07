@@ -2,7 +2,8 @@ import {  } from "../../api/api"
 import * as types from '../mutations_type'
 
 const state = {
-    rankList: []
+    // 当前音乐播放列表
+    currentPlayMusicList: []
 }
 
 const getters = {

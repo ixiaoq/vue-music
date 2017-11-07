@@ -1,6 +1,6 @@
 <template>
-	<div @click="changeList()">
-		<a href="javascript:;" :class="{'active': isShow}"> {{ title }} </a>
+	<div class="tabbar-item">
+		<router-link :to="id" :class="{'active': isShow}">{{ title }} </router-link>
 	</div>
 </template>
 
@@ -30,17 +30,12 @@ export default {
 		}
 	},
 
-  methods: {
-    changeList () {
-			this.$router.push(this.id);
-		}
-	}
 	
 };
 </script>
 
 <style lang="less">
-div {
+.tabbar-item {
   flex: 1;
   a {
     display: block;
