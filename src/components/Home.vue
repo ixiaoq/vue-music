@@ -4,8 +4,8 @@
 		<div class="main">
 			<div class="top_scroll"></div>
 			<v-tabbar>
-				<v-tabbar-item id="recommend" title="推荐" :isActive="isActive" @changeclass="navActive"></v-tabbar-item>
-				<v-tabbar-item id="rank" title="排行榜" :isActive="!isActive" @changeclass="navActive"></v-tabbar-item>
+				<v-tabbar-item id="recommend" title="推荐" :current-id="currentName"></v-tabbar-item>
+				<v-tabbar-item id="rank" title="排行榜" :current-id="currentName"></v-tabbar-item>
 			</v-tabbar>
 
 			<router-view/>
@@ -22,23 +22,24 @@ import vTabbarItem from "./home/TabbarItem";
 
 export default {
   name: "Home",
-  data() {
+  data () {
     return {
-			isActive: true,
       input: "林中鸟"
     };
-  },
+	},
+	
   components: {
 		vSearch,
 		vTabbar,
 		vTabbarItem
-  },
-  methods: {
-    navActive(value) {
-			this.isActive = !value;
-			this.$router.push(id);
+	},
+	
+  computed: {
+    currentName() {
+			return this.$route.params.id;
     }
-  }
+	}
+
 };
 </script>
 

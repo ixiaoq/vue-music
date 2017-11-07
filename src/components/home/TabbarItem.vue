@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<a href="javascript:;" :class="{'active': isActive}" @click="navActive()"> {{ title }} </a>
+	<div @click="changeList()">
+		<a href="javascript:;" :class="{'active': isShow}"> {{ title }} </a>
 	</div>
 </template>
 
@@ -12,22 +12,30 @@ export default {
 			type: String,
 			required: true
 		},
+		
 		title: {
 			type: String,
 			required: true
 		},
-		isActive: {
-			type: Boolean,
+
+		currentId: {
+			type: String,
 			required: true
 		}
 	},
 
-  methods: {
-    navActive: () => {
-			console.log(this);
-			this.$emit("changeclass", this.isActive);
+	computed: {
+		isShow () {
+			return this.id === this.currentId
 		}
-  }
+	},
+
+  methods: {
+    changeList () {
+			this.$router.push(this.id);
+		}
+	}
+	
 };
 </script>
 

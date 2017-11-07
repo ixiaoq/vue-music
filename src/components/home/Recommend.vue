@@ -7,24 +7,13 @@
 <script>
 
 export default {
-	name: "recommend",
+	name: "recommend"
 	
-  data() {
-    return {
-			navClass: true,
-      input: "林中鸟"
-    };
-	}
 };
+
 </script>
 
 <style lang="less" scope>
-.home {
-  height: 100%;
-	overflow-y: auto;
-	
-	
-}
 
 
 </style>

@@ -14,7 +14,7 @@ export default new Router({
       component: Home,
       children: [
         {
-          path: '',
+          path: 'recommend',
           component: Recommend
         },
         {
