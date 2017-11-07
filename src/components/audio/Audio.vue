@@ -19,7 +19,6 @@
 
     <audio :src="'http://ws.stream.qqmusic.qq.com/108756031.m4a?fromtag=46'" 
 			ref="audio" 
-			@volumechange="volumechange" 
 			@timeupdate="timeupdate" 
 			@ended="ended"></audio>
   </div>
