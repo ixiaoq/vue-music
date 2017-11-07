@@ -1,6 +1,7 @@
 
 // home
-export const HOME = "HOME";
+export const HOME_PAGE_STATE = "HOME_PAGE_STATE";
+export const GET_HOME_DATA = "GET_HOME_DATA";
 
 
 // audio播放器

@@ -1,10 +1,11 @@
 <template>
-	<div class="tabbar-item">
-		<router-link :to="id" :class="{'active': isShow}">{{ title }} </router-link>
+	<div class="tabbar-item"  @click="changeHomeState()">
+		<router-link :to="{name: id, params: {id: id}}" :class="{'active': isShow}">{{ title }} </router-link>
 	</div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 
 export default {
   props: {
@@ -16,20 +17,20 @@ export default {
 		title: {
 			type: String,
 			required: true
-		},
-
-		currentId: {
-			type: String,
-			required: true
 		}
 	},
-
+	
 	computed: {
 		isShow () {
-			return this.id === this.currentId
+			return this.id == this.$store.state.home.honePageState;
 		}
 	},
 
+	methods: {
+		changeHomeState () {
+			this.$store.dispatch("changeHomePage", this.id);
+		}
+	},
 	
 };
 </script>

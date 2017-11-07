@@ -4,8 +4,8 @@
 		<div class="main">
 			<div class="top_scroll"></div>
 			<v-tabbar>
-				<v-tabbar-item id="recommend" title="推荐" :current-id="currentName"></v-tabbar-item>
-				<v-tabbar-item id="rank" title="排行榜" :current-id="currentName"></v-tabbar-item>
+				<v-tabbar-item id="recommend" title="推荐"></v-tabbar-item>
+				<v-tabbar-item id="rank" title="排行榜"></v-tabbar-item>
 			</v-tabbar>
 
 			<router-view></router-view>
@@ -33,12 +33,9 @@ export default {
 		vTabbar,
 		vTabbarItem
 	},
-	
-  computed: {
-		// 切换导航时, 重新计算属性
-    currentName() {
-			return this.$route.params.id;
-    }
+
+	created () {
+		this.$store.dispatch("getHomeData");
 	}
 
 };
@@ -73,7 +70,7 @@ export default {
 		}
 
 		.bottom_srcoll {
-			height: 40px;
+			height: 50px;
 		}
 	}
 	

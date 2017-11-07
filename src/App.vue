@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- <router-view></router-view> -->
+    <router-view></router-view>
     
     <my-audio v-show="isAudio"></my-audio>
   </div>
@@ -62,5 +62,21 @@
     position: relative;
   }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+img[lazy=loaded] {
+  animation: fadeIn 1s;
+}
+
+img[lazy=error] {
+  border-radius: 2px;
+  animation: fadeIn 1s;
+}
 
 </style>

@@ -6,8 +6,8 @@
 				<img src="../../assets/tonghuazhen.jpg">
 			</div>
 			<div class="music-name">
-				<p>我们都一样</p>
-				<p>我们</p>
+				<p class="title">我们都一样</p>
+				<p class="name">我们</p>
 			</div>
 			<div class="music-play">
 				<img src="../../assets/icon-play.png">
@@ -19,7 +19,6 @@
 
     <audio :src="'http://ws.stream.qqmusic.qq.com/108756031.m4a?fromtag=46'" 
 			ref="audio" 
-			@volumechange="volumechange" 
 			@timeupdate="timeupdate" 
 			@ended="ended"></audio>
   </div>
@@ -74,7 +73,8 @@ export default {
 	height: 50px;
 	padding: 5px 10px;
   z-index: 99;
-  overflow: hidden;
+	overflow: hidden;
+	background: #eee;
 
   .mini-face {
 		display: flex;
@@ -82,11 +82,21 @@ export default {
 
 		.music-img { 
 			width: 40px;
+			border-radius: 4px;
+			box-shadow: 0 0 5px rgba(0,0,0,.3);
+			overflow: hidden;
 		}
 		.music-name {
 			padding: 0 10px;
 			flex: 1;
 			text-align: left;
+			.title {
+				font-size: 14px;
+				margin-bottom: 3px;
+			}
+			.name {
+				font-size: 12px;
+			}
 		}
 		.music-play { 
 			width: 40px;
