@@ -15,10 +15,12 @@ export default new Router({
       children: [
         {
           path: 'recommend',
+          name: 'recommend',
           component: Recommend
         },
         {
           path: 'rank',
+          name: 'rank',
           component: Rank
         }
       ]
