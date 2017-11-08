@@ -1,25 +1,26 @@
 <template>
   <div class="audio">
-    
+
 		<div class="mini-face">
 			<div class="music-img">
-				<img src="../../assets/tonghuazhen.jpg">
+				<img :src="musicList[playId].picUrl">
 			</div>
 			<div class="music-name">
-				<p class="title">我们都一样</p>
-				<p class="name">我们</p>
+				<p class="title">{{ musicList[playId].songName }}</p>
+				<p class="name">{{ musicList[playId].singerName }}</p>
 			</div>
-			<div class="music-play">
-				<img src="../../assets/icon-play.png">
+			<div class="music-play" @click="play()">
+				<img src="../../assets/icon-play.png" v-if="!isPlay">
+				<img src="../../assets/icon-pause.png" v-if="isPlay">
 			</div>
 			<div class="music-list">
 				<img src="../../assets/icon-list.png">
 			</div>
 		</div>
 
-    <audio :src="'http://ws.stream.qqmusic.qq.com/108756031.m4a?fromtag=46'" 
-			ref="audio" 
-			@timeupdate="timeupdate" 
+    <audio :src="musicList[playId].songUrl"
+			ref="audio"
+			@timeupdate="timeupdate"
 			@ended="ended"></audio>
   </div>
 </template>
@@ -29,15 +30,21 @@ import { mapState } from "vuex";
 
 export default {
 	name: "search",
-	
+
   computed: {
     ...mapState({
-      currentMusicUrl(state) {
-        return state.search.currentMusicUrl;
-      }
-    })
+			isPlay () {
+				return this.$store.state.audio.isPlay;
+			},
+			playId () {
+				return this.$store.state.audio.playId;
+			},
+			musicList () {
+				return this.$store.state.audio.currentPlayMusicList;
+			}
+		})
 	},
-	
+
 	/**
 	 * loop		设置或返回音频是否应在结束时再次播放。
 	 * muted	设置或返回是否关闭声音。
@@ -48,16 +55,19 @@ export default {
 	 * currentTime	设置或返回音频中的当前播放位置（以秒计）。
 	 * preload   预加载  none | metadata | auto
 	 * readyState	返回音频当前的就绪状态。
-	 * 
+	 *
 	 */
 	methods: {
 		// 播放进度
 		timeupdate (newTime) {
-			console.log(this.$refs.audio.seeking);
-			// console.log(newTime.timeStamp);
+			this.$store.dispatch("getCurrentTime", newTime.timeStamp);
 		},
 		ended () {
 			console.log("播放完成");
+		},
+		play () {
+			this.$store.dispatch("changePlay");
+			this.isPlay ? this.$refs.audio.play() : this.$refs.audio.pause();
 		}
 	}
 
@@ -78,12 +88,12 @@ export default {
 
   .mini-face {
 		display: flex;
-		height: 40px; 
+		height: 40px;
 
-		.music-img { 
+		.music-img {
 			width: 40px;
-			border-radius: 4px;
-			box-shadow: 0 0 5px rgba(0,0,0,.3);
+			border-radius: 50%;
+			box-shadow: 0 0 2px rgba(0,0,0,.2);
 			overflow: hidden;
 		}
 		.music-name {
@@ -98,11 +108,11 @@ export default {
 				font-size: 12px;
 			}
 		}
-		.music-play { 
+		.music-play {
 			width: 40px;
 			padding: 5px;
 		}
-		.music-list { 
+		.music-list {
 			width: 40px;
 			margin-left: 30px;
 		}
