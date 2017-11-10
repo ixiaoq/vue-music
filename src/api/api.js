@@ -13,9 +13,9 @@ function proxyJsonp(commit, type, url, data) {
 };
 
 // home
-export function request(commit, type, api) {
+export function request(commit, type, api, id) {
   let url = API[api].url;
-	let data = API[api].params();
+	let data = API[api].params(id);
 	data.jsonpCallback = API[api].jsonp;
 
   proxyJsonp(commit, type, url, data)

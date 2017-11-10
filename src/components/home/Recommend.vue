@@ -41,12 +41,13 @@ import { swiper, swiperSlide } from "vue-awesome-swiper";
 require("swiper/dist/css/swiper.css");
 
 export default {
-  name: "recommend",
+  name: "Recommend",
   data() {
     return {
 			hotShow: 12,
       swiperOption: {
         autoplay: 3000,
+        loop: true,
         pagination: ".swiper-pagination",
         paginationClickable: true,
         autoplayDisableOnInteraction: false
@@ -57,6 +58,10 @@ export default {
   components: {
     swiper,
     swiperSlide
+  },
+  
+  mounted () {
+    this.$store.dispatch("changeHomePage", "recommend");
   },
 
   computed: {
@@ -80,7 +85,8 @@ export default {
 		h3 {
 			height: 50px;
 			line-height: 50px;
-			font-weight: normal;
+      font-weight: normal;
+      font-size: 0.16rem;
 		}
 
 		.list-content {
@@ -95,7 +101,8 @@ export default {
 					position: relative;
 					display: flex;
 					.listennum {
-						padding: 0 5px;
+            padding: 0 5px;
+            font-size: 0.12rem;
 					}
 				}
 
@@ -103,7 +110,7 @@ export default {
 					display: block;
 					padding: 0 5px;
 					text-align: left;
-					font-size: 12px;
+					font-size: 0.14rem;
 				}
 				.item-dissname{
 					text-overflow: ellipsis;

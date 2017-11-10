@@ -55,7 +55,7 @@ export default {
 			display: flex;
 			height: 50px;
 			line-height: 50px;
-			font-size: 16px;
+			font-size: 0.16rem;
 			div {
 				flex: 1;
 				a {

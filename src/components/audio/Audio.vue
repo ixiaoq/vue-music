@@ -16,12 +16,13 @@
 			<div class="music-list">
 				<img src="../../assets/icon-list.png">
 			</div>
-		</div>
 
-    <audio :src="musicList[playId].songUrl"
-			ref="audio"
-			@timeupdate="timeupdate"
-			@ended="ended"></audio>
+			<audio :src="musicList[playId].songUrl"
+				ref="audio"
+				@timeupdate="timeupdate"
+				@ended="ended">
+			</audio>
+		</div>
   </div>
 </template>
 
@@ -30,7 +31,11 @@ import { mapState } from "vuex";
 
 export default {
 	name: "search",
-
+	
+  mounted(){
+    this.$store.dispatch('addDom',{name:'audio', dom: this.$refs.audio})
+	},
+	
   computed: {
     ...mapState({
 			isPlay () {
@@ -62,8 +67,9 @@ export default {
 		timeupdate (newTime) {
 			this.$store.dispatch("getCurrentTime", newTime.timeStamp);
 		},
+		// 下一曲
 		ended () {
-			console.log("播放完成");
+			this.$store.dispatch("nextSong", this.playId);
 		},
 		play () {
 			this.$store.dispatch("changePlay");
@@ -84,7 +90,7 @@ export default {
 	padding: 5px 10px;
   z-index: 99;
 	overflow: hidden;
-	background: #eee;
+	background: #ddd;
 
   .mini-face {
 		display: flex;

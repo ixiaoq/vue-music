@@ -35,7 +35,7 @@
   html, body {
     height: 100%;
     width: 100%;
-    font-size: 14px;
+    font-size: 100px;
   }
   body {
     max-width: 750px;
@@ -60,6 +60,14 @@
     height: 100%;
     overflow: hidden;
     position: relative;
+  }
+
+  .txt_hide{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    word-break: break-all;
   }
 
 @keyframes fadeIn {
