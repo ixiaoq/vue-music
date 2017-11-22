@@ -18,7 +18,7 @@ const state = {
             songUrl:'http://ws.stream.qqmusic.qq.com/108756031.m4a?fromtag=46',
             picUrl:'http://y.gtimg.cn/music/photo_new/T002R300x300M000'+'0044cHmg45iock'+'.jpg?max_age=2592000',
         }
-    ]
+	]
 }
 
 const getters = { }

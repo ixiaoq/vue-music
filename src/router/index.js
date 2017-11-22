@@ -4,6 +4,7 @@ const Home = resolve => require(['../components/Home'], resolve)
 const Recommend = resolve => require(['../components/home/Recommend'], resolve)
 const Rank = resolve => require(['../components/home/Rank'], resolve)
 const RankSongList = resolve => require(['../components/home/RankSongList'], resolve)
+const AudioList = resolve => require(['../components/audio/AudioList'], resolve)
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ export default new Router({
       path: '/rank/:id',
       name: "RankSongList",
       component: RankSongList
+    },
+    {
+      path: '/audio-list',
+      name: "audioList",
+      component: AudioList
     },
 
     {

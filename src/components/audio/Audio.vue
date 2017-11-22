@@ -13,7 +13,7 @@
 				<img src="../../assets/icon-play.png" v-if="!isPlay">
 				<img src="../../assets/icon-pause.png" v-if="isPlay">
 			</div>
-			<div class="music-list">
+			<div class="music-list" @click="openList()">
 				<img src="../../assets/icon-list.png">
 			</div>
 
@@ -30,27 +30,27 @@
 import { mapState } from "vuex";
 
 export default {
-	name: "search",
-	
-  mounted(){
-    this.$store.dispatch('addDom',{name:'audio', dom: this.$refs.audio})
-	},
-	
+  name: "search",
+
+  mounted() {
+		this.$store.dispatch("addDom", { name: "audio", dom: this.$refs.audio });
+  },
+
   computed: {
     ...mapState({
-			isPlay () {
-				return this.$store.state.audio.isPlay;
-			},
-			playId () {
-				return this.$store.state.audio.playId;
-			},
-			musicList () {
-				return this.$store.state.audio.currentPlayMusicList;
-			}
-		})
-	},
+      isPlay() {
+        return this.$store.state.audio.isPlay;
+      },
+      playId() {
+        return this.$store.state.audio.playId;
+      },
+      musicList() {
+        return this.$store.state.audio.currentPlayMusicList;
+      }
+    })
+  },
 
-	/**
+  /**
 	 * loop		设置或返回音频是否应在结束时再次播放。
 	 * muted	设置或返回是否关闭声音。
 	 * paused	设置或返回音频是否暂停。
@@ -62,21 +62,24 @@ export default {
 	 * readyState	返回音频当前的就绪状态。
 	 *
 	 */
-	methods: {
-		// 播放进度
-		timeupdate (newTime) {
-			this.$store.dispatch("getCurrentTime", newTime.timeStamp);
-		},
-		// 下一曲
-		ended () {
-			this.$store.dispatch("nextSong", this.playId);
-		},
-		play () {
-			this.$store.dispatch("changePlay");
-			this.isPlay ? this.$refs.audio.play() : this.$refs.audio.pause();
-		}
-	}
-
+  methods: {
+    // 播放进度
+    timeupdate(newTime) {
+      this.$store.dispatch("getCurrentTime", newTime.timeStamp);
+    },
+    // 下一曲
+    ended() {
+      this.$store.dispatch("nextSong", this.playId);
+    },
+    play() {
+      this.$store.dispatch("changePlay");
+      this.isPlay ? this.$refs.audio.play() : this.$refs.audio.pause();
+    },
+    openList() {
+      console.log(this.$router);
+      this.$router.push("/audio-list");
+    }
+  }
 };
 </script>
 
@@ -86,42 +89,42 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
-	height: 50px;
-	padding: 5px 10px;
+  height: 50px;
+  padding: 5px 10px;
   z-index: 99;
-	overflow: hidden;
-	background: #ddd;
+  overflow: hidden;
+  background: #ddd;
 
   .mini-face {
-		display: flex;
-		height: 40px;
+    display: flex;
+    height: 40px;
 
-		.music-img {
-			width: 40px;
-			border-radius: 50%;
-			box-shadow: 0 0 2px rgba(0,0,0,.2);
-			overflow: hidden;
-		}
-		.music-name {
-			padding: 0 10px;
-			flex: 1;
-			text-align: left;
-			.title {
-				font-size: 14px;
-				margin-bottom: 3px;
-			}
-			.name {
-				font-size: 12px;
-			}
-		}
-		.music-play {
-			width: 40px;
-			padding: 5px;
-		}
-		.music-list {
-			width: 40px;
-			margin-left: 30px;
-		}
+    .music-img {
+      width: 40px;
+      border-radius: 50%;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+    .music-name {
+      padding: 0 10px;
+      flex: 1;
+      text-align: left;
+      .title {
+        font-size: 14px;
+        margin-bottom: 3px;
+      }
+      .name {
+        font-size: 12px;
+      }
+    }
+    .music-play {
+      width: 40px;
+      padding: 5px;
+    }
+    .music-list {
+      width: 40px;
+      margin-left: 30px;
+    }
   }
 }
 </style>
