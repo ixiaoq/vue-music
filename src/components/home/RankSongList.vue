@@ -1,6 +1,8 @@
 <template>
   <div class="rank-song-list" >
-    <div class="back" @click="back()">后退</div>
+    <div class="back" @click="back()">
+      <img src="../../assets/icon-back.svg" alt="">
+    </div>
 
 		<div class="rank-pic">
 			<img v-lazy="rankData.picAlbum" alt="">
@@ -13,7 +15,7 @@
 		</div>
 
 		<div class="songs-content" :style="{'background': color, 'color': isDark}">
-			<div class="song-item" v-for="(item, index) in rankData.songList" :key="item.id" @click="playSong(index)">
+			<div class="song-item" v-for="(item, index) in rankData.songList" :key="item.id" @click="playSingle(index)">
 				<div class="num">{{ index + 1 }}</div>
 				<div class="content">
 					<p class="name txt_hide">{{ item.data.songname }}</p>
@@ -96,13 +98,10 @@ export default {
         arr.push(music);
       }
       this.audioList = arr;
-      // this.$store.dispatch("changeAudioList", this.audioList);
 		},
-		playSong (id) {
+		playSingle (id) {
 			this.getList();
-			this.$store.dispatch("playCurrentSong", this.audioList[id]);
-			// this.$store.dispatch("getLyric", this.audioList[id]);
-			// this.$store.state.audio.DOM.audio.play();
+			this.$store.dispatch("playSingle", this.audioList[id]);
 		},
 		playAll () {
 			this.getList();
@@ -123,11 +122,21 @@ export default {
 
   .back {
     position: absolute;
-    left: 0.1rem;
-    top: 0.1rem;
+    left: 0.1rem; top: 0.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 0.4rem;
     height: 0.4rem;
     color: #fff;
+    background: rgba(255, 255, 255,.5);
+    border-radius: 50%;
+    box-shadow: 0 0 0.10rem 0.05rem rgba(0, 0, 0,.2);
+
+    img {
+      width: 90%;
+      height: 90%;
+    }
   }
 
   .rank-pic {
@@ -169,7 +178,7 @@ export default {
       display: flex;
       align-items: center;
       text-align: center;
-      padding: 0 0.1rem;
+      // padding: 0 0.1rem;
       &:last-of-type .content {
         border-bottom: none;
       }

@@ -1,24 +1,25 @@
 <template>
-  <div class="audio">
-
-		<div class="mini-face">
+  <div class="audio" v-show="isGlobalAudio">
+    <div class="time-line" id="time-line"></div>
+		<div class="mini-face" @click.stop="openPlayPage()">
 			<div class="music-img">
-				<img :src="musicList[playId].picUrl">
+				<img :src="playMusicList[playId].picUrl">
 			</div>
 			<div class="music-name">
-				<p class="title">{{ musicList[playId].songName }}</p>
-				<p class="name">{{ musicList[playId].singerName }}</p>
+				<p class="title">{{ playMusicList[playId].songName }}</p>
+				<p class="name">{{ playMusicList[playId].singerName }}</p>
 			</div>
-			<div class="music-play" @click="play()">
+			<div class="music-play" @click.stop="play()">
 				<img src="../../assets/icon-play.png" v-if="!isPlay">
 				<img src="../../assets/icon-pause.png" v-if="isPlay">
 			</div>
-			<div class="music-list" @click="openList()">
+			<div class="music-list" @click.stop="openList()">
 				<img src="../../assets/icon-list.png">
 			</div>
 
-			<audio :src="musicList[playId].songUrl"
+			<audio :src="playMusicList[playId].songUrl"
 				ref="audio"
+        @loadedmetadata="playMusic"
 				@timeupdate="timeupdate"
 				@ended="ended">
 			</audio>
@@ -37,15 +38,33 @@ export default {
   },
 
   computed: {
+    // ...mapState([
+    //   'isGlobalAudio',
+    //   'isPlay',
+    //   'playId',
+    //   'playMusicList'
+    // ])
     ...mapState({
+      isGlobalAudio() {
+        return this.$store.state.audio.isGlobalAudio;
+      },
+      audioDOM() {
+        return this.$store.state.audio.DOM.audio;
+      },
       isPlay() {
         return this.$store.state.audio.isPlay;
       },
       playId() {
         return this.$store.state.audio.playId;
       },
-      musicList() {
-        return this.$store.state.audio.currentPlayMusicList;
+      playMusicList() {
+        return this.$store.state.audio.playMusicList;
+      },
+      isAudioPlay() {
+        return this.$store.state.audio.isAudioPlay;
+      },
+      playMode() {
+        return this.$store.state.audio.audioPlayMode;
       }
     })
   },
@@ -64,20 +83,57 @@ export default {
 	 */
   methods: {
     // 播放进度
-    timeupdate(newTime) {
-      this.$store.dispatch("getCurrentTime", newTime.timeStamp);
+    timeupdate() {
+      var totalT = this.audioDOM.duration;
+      var currentT = this.audioDOM.currentTime;
+      var w = currentT / totalT * 100;
+      console.log(totalT, currentT);
+      
+      var line = document.getElementById("time-line").style.width = w + "%";
+
+      this.$store.dispatch("getCurrentTime", currentT);
     },
     // 下一曲
     ended() {
-      this.$store.dispatch("nextSong", this.playId);
+      var id = this.playId;
+      var length = this.playMusicList.length;
+      // 0顺序播放   1随机播放    2单曲循环
+      switch (this.playMode) {
+        case 0:
+          id = id >= length ? 0 : ++id;
+          break;
+        case 1:
+          id = Math.round(Math.random() * length);
+          break;
+        case 2:
+          id = id;
+          break;
+        default: 
+          console.log("无效模式");
+          break;
+      }
+      
+      console.log(id, length, this.playMode);
+
+      this.$store.dispatch("nextSong", id);
     },
     play() {
-      this.$store.dispatch("changePlay");
-      this.isPlay ? this.$refs.audio.play() : this.$refs.audio.pause();
+      this.$store.dispatch("changePlayState");
+      this.isPlay ? this.audioDOM.play() : this.audioDOM.pause();
     },
     openList() {
-      console.log(this.$router);
-      this.$router.push("/audio-list");
+      this.$store.commit("AUDIO_SONGS_LIST_STATE");
+    },
+    openPlayPage() {
+      this.$store.commit("AUDIO_PLAY_PAGE_STATE");
+    },
+    playMusic() {
+      if (!this.isAudioPlay) return this.$store.commit("AUDIO_AUTO_PLAY");
+      this.$store.dispatch("changePlayState", true);
+      this.audioDOM.play();
+
+      var totalT = this.audioDOM.duration;
+      console.log(totalT);
     }
   }
 };
@@ -89,18 +145,27 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 50px;
-  padding: 5px 10px;
+  height: 0.50rem;
   z-index: 99;
   overflow: hidden;
   background: #ddd;
 
+  .time-line {
+    position: absolute;
+    left: 0; top: 0;
+    width: 0;
+    height: 0.01rem;
+    background: red;
+    box-shadow: 0 0 0.05rem rgba(255, 255, 255, 0.6);
+  }
+
   .mini-face {
     display: flex;
-    height: 40px;
+    height: 100%;
+    padding: 0.05rem 0.10rem;
 
     .music-img {
-      width: 40px;
+      width: 0.40rem;
       border-radius: 50%;
       box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
       overflow: hidden;
@@ -110,20 +175,24 @@ export default {
       flex: 1;
       text-align: left;
       .title {
-        font-size: 14px;
+        width: 100%;
         margin-bottom: 3px;
+        font-size: 14px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
       .name {
         font-size: 12px;
       }
     }
     .music-play {
-      width: 40px;
-      padding: 5px;
+      width: 0.40rem;
+      padding: 0.05rem;
     }
     .music-list {
-      width: 40px;
-      margin-left: 30px;
+      width: 0.40rem;
+      margin-left: 0.30rem;
     }
   }
 }

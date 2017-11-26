@@ -1,6 +1,6 @@
 <template>
 	<div class="recommend">
-		<swiper class="mySwipe" :options="swiperOption" ref="mySwiper">
+		<swiper class="mySwipe" :options="swiperOption1" ref="mySwiper">
       <!-- slides -->
       <swiper-slide v-for="(item, index) in homeData.focus" :key="index">
         <img class="swiper-img" :src="item.pic" />
@@ -45,12 +45,12 @@ export default {
   data() {
     return {
 			hotShow: 12,
-      swiperOption: {
+      swiperOption1: {
         autoplay: 3000,
         loop: true,
         pagination: ".swiper-pagination",
-        paginationClickable: true,
-        autoplayDisableOnInteraction: false
+        // paginationClickable: true,
+        // autoplayDisableOnInteraction: false,
       }
     };
   },
@@ -79,7 +79,14 @@ export default {
   }
   .swiper-pagination-bullet-active {
     background-color: #fff;
-	}
+  }
+  
+  .swiper-pagination {
+    height: 0.2rem;
+    display: flex;
+    justify-content: center;
+    bottom: 0 !important;
+  }
 	
 	.hot-list {
 		h3 {
@@ -92,7 +99,8 @@ export default {
 		.list-content {
 			display: flex;
 			flex-wrap: wrap;
-			justify-content: space-between;
+      justify-content: space-between;
+      
 			.hotdiss-item {
 				width: 32%;
 				margin-bottom: 10px;

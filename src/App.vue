@@ -3,11 +3,15 @@
     <router-view></router-view>
     
     <my-audio v-show="isAudio"></my-audio>
+    <audio-list ref="audioList"></audio-list>
+    <audio-play-page ref="audioPlayPage"></audio-play-page>
   </div>
 </template>
 
 <script>
   import MyAudio from "./components/audio/Audio"
+  import AudioList from "./components/audio/AudioList"
+  import AudioPlayPage from "./components/audio/AudioPlayPage"
   
   export default {
     name: 'app',
@@ -18,7 +22,9 @@
       }
     },
     components: {
-      MyAudio
+      MyAudio,
+      AudioList,
+      AudioPlayPage
     }
   }
 
