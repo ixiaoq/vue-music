@@ -1,12 +1,13 @@
 <template>
   <div class="page-home">
-    <v-search />
+    <v-search></v-search>
 		<div class="main">
 			<div class="top_scroll"></div>
 			<v-tabbar>
 				<v-tabbar-item id="recommend" title="推荐"></v-tabbar-item>
 				<v-tabbar-item id="rank" title="排行榜"></v-tabbar-item>
 			</v-tabbar>
+
 
 			<router-view></router-view>
 			

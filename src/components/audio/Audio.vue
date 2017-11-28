@@ -87,7 +87,7 @@ export default {
       var totalT = this.audioDOM.duration;
       var currentT = this.audioDOM.currentTime;
       var w = currentT / totalT * 100;
-      console.log(totalT, currentT);
+      // console.log(totalT, currentT);
       
       var line = document.getElementById("time-line").style.width = w + "%";
 
