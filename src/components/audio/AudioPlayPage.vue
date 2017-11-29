@@ -23,12 +23,12 @@
     <div class="control-bar">
       <div class="time-line">
         <div class="t-d">
-          <span class="line">
-            <span class="dot"></span>
+          <span class="line" :style="{width: currentT.w + '%'}">
+            <span class="dot" @click="setPlayTime()"></span>
           </span>
         </div>
-        <span class="start-time">00:00</span>
-        <span class="end-time">04:20</span>
+        <span class="start-time">{{ currentT.ct  }} </span>
+        <span class="end-time">{{ currentT.tt }}</span>
       </div>
       <div class="songs-info">
         <p class="songs-name">{{ playMusicList[playId].songName }}</p>
@@ -36,27 +36,27 @@
       </div>
       <div class="control-interface">
         <div class="top">
-          <span><img src="../../assets/icon-shangyiqu.png"></span>
-          <span><img src="../../assets/icon-play.png"></span>
-          <span><img src="../../assets/icon-xiayiqu.png"></span>
+          <div><img src="../../assets/icon-shangyiqu.png"></div>
+          <div>
+            <img src="../../assets/icon-play.png" v-if="!isPlay" @click="play()">
+				    <img src="../../assets/icon-pause.png" v-if="isPlay" @click="play()">
+          </div>
+          <div><img src="../../assets/icon-xiayiqu.png" @click="next()"></div>
         </div>
         <div class="bot">
-          <span><img src="../../assets/icon-SEQUENTIAL.png"></span>
-          <span><img src="../../assets/icon-like.png"></span>
-          <span><img src="../../assets/icon-volue-right.png"></span>
-          <span><img src="../../assets/icon-list.png"></span>
-          <span><img src="../../assets/icon-singer.png"></span>
+          <div><img src="../../assets/icon-SEQUENTIAL.png" @click="changeMode()"></div>
+          <div><img src="../../assets/icon-like.png"></div>
+          <div><img src="../../assets/icon-volue-right.png" @click="isVolume()"></div>
+          <div><img src="../../assets/icon-list.png"></div>
         </div>
       </div>
     </div>
-
-    <!-- <div @click="setPlayTime()">设置</div> -->
 
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 require("swiper/dist/css/swiper.css");
@@ -81,9 +81,32 @@ export default {
       audioDOM() {
         return this.$store.state.audio.DOM.audio;
       },
-      // isPlay() {
-      //   return this.$store.state.audio.isPlay;
-      // },
+      currentT() {
+        var tt = this.$store.state.audio.currentTime.totalT;
+        var ct = this.$store.state.audio.currentTime.currentT;
+        var w = 0;
+        if (tt != ct) w = (ct / tt * 100).toFixed(2);
+
+        // 格式化时间
+        function format(num) {
+          if (isNaN(num)) return "00:00";
+
+          var t = parseInt(num / 60);
+          t = t > 9 ? t : "0" + t;
+          var r = parseInt(num % 60);
+          r = (r > 9 ? r : "0" + r)
+          return t + ":" + r;
+        }
+
+        tt = format(tt);
+        ct = format(ct);
+
+        // console.log(ct, tt, w);
+        return { tt, ct, w };
+      },
+      isPlay() {
+        return this.$store.state.audio.isPlay;
+      },
       playId() {
         return this.$store.state.audio.playId;
       },
@@ -101,13 +124,17 @@ export default {
       this.$store.commit("GLOBAL_AUDIO_STATE", 1);
     },
     next() {
-      this.$store.dispatch("nextSong", 2);
+      this.$store.dispatch("nextSong", this.playId);
+    },
+    play() {
+      this.$store.dispatch("changePlayState");
+      this.isPlay ? this.audioDOM.play() : this.audioDOM.pause();
     },
     setPlayTime() {
       this.audioDOM.currentTime = 200;
-      console.log(this.audioDOM.seekable);
-      console.log(this.audioDOM.seeked);
-    }
+    },
+    changeMode() {},
+    isVolume() {}
   }
 };
 </script>
@@ -151,6 +178,7 @@ export default {
     flex: 1;
 
     .mySwipe {
+      width: 100%;
       height: 100%;
 
       img {
@@ -168,12 +196,12 @@ export default {
   }
 
   .control-bar {
-    flex: 0 0 2rem;
+    flex: 0 0 2.5rem;
   }
 
   .time-line {
     position: relative;
-    height: 0.30rem;
+    height: 0.3rem;
     padding-right: 0.15rem;
     font-size: 0.16rem;
 
@@ -217,27 +245,29 @@ export default {
   }
 
   .songs-info {
-    height: 0.6rem;
-    .songs-name { 
-      height: 0.30rem;
-      font-size: 0.20rem;
+    height: 0.7rem;
+    .songs-name {
+      height: 0.4rem;
+      line-height: 0.4rem;
+      font-size: 0.2rem;
     }
-    .singer { 
+    .singer {
+      height: 0.3rem;
       font-size: 0.16rem;
     }
   }
 
   .control-interface {
-    
+    display: flex;
+    flex-direction: column;
+
     .top {
       display: flex;
       justify-content: center;
-      height: 0.6rem;
-      padding: 0.12rem 0;
-      span {
+      height: 1rem;
+      padding: 0.28rem 0;
+      div {
         flex: 1;
-        margin: 0 0.2rem;
-
         &:first-of-type {
           text-align: right;
         }
@@ -253,13 +283,14 @@ export default {
     }
     .bot {
       display: flex;
-      justify-content: center;
+      flex-direction: row;
       height: 0.5rem;
       padding: 0.1rem 0;
       border-top: 0.01rem solid #f0f0f0;
-      span {
+      div {
         flex: 1;
       }
+
       img {
         display: inline-block;
         width: auto;

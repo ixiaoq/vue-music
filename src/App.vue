@@ -11,7 +11,7 @@
 <script>
   import MyAudio from "./components/audio/Audio"
   import AudioList from "./components/audio/AudioList"
-  import AudioPlayPage from "./components/audio/AudioPlayPage"
+  const AudioPlayPage = resolve => require(['./components/audio/AudioPlayPage'], resolve)
   
   export default {
     name: 'app',

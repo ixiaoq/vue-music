@@ -8,7 +8,10 @@ const state = {
     // 当前播放索引
     playId: 0,
     // 当前播放时间
-    currentTime: 0,
+    currentTime: {
+        currentT: 0,
+        totalT: 0
+    },
     // 当前音乐播放列表
     playMusicList: [
         {
@@ -44,8 +47,6 @@ const mutations = {
     },
     [types.AUDIO_CURRENT_TIME] (state, newTime) {
         state.currentTime = newTime;
-        var time = (newTime / 1000).toFixed(0);
-        // console.log(time);
     },
     [types.PLAY_SINGLE] (state, data) {
         state.playMusicList = [data];
@@ -55,7 +56,26 @@ const mutations = {
 		state.playId = 0;
     },
     [types.NEXT_SONG] (state, index) {
-        state.playId = index;
+        var id = state.playId;
+        var length = state.playMusicList.length;
+        // 0顺序播放   1随机播放    2单曲循环
+        
+        switch (state.audioPlayMode) {
+          case 0:
+            id = id >= length ? 0 : ++id;
+            break;
+          case 1:
+            id = Math.round(Math.random() * (length - 0 + 1) + 0);
+            break;
+          case 2:
+            id = id;
+            break;
+          default: 
+            console.log("无效模式");
+            break;
+        }
+        console.log(id);
+        state.playId = id;
     },
     [types.AUDIO_SONGS_LIST_STATE] (state) {
         state.audioListPageState = !state.audioListPageState;
@@ -89,9 +109,6 @@ const actions = {
     },
     changePlayState ({ commit }, state) {
         commit(types.IS_PLAYING, state);
-    },
-    getCurrentTime ({ commit }, newTime) {
-        commit(types.AUDIO_CURRENT_TIME, newTime);
     },
     playSingle ({ commit }, song) {
         commit(types.PLAY_SINGLE, song);

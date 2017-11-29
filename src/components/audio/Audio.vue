@@ -87,35 +87,13 @@ export default {
       var totalT = this.audioDOM.duration;
       var currentT = this.audioDOM.currentTime;
       var w = currentT / totalT * 100;
-      // console.log(totalT, currentT);
+      document.getElementById("time-line").style.width = w + "%";
       
-      var line = document.getElementById("time-line").style.width = w + "%";
-
-      this.$store.dispatch("getCurrentTime", currentT);
+      this.$store.commit("AUDIO_CURRENT_TIME", {currentT, totalT});
     },
     // 下一曲
     ended() {
-      var id = this.playId;
-      var length = this.playMusicList.length;
-      // 0顺序播放   1随机播放    2单曲循环
-      switch (this.playMode) {
-        case 0:
-          id = id >= length ? 0 : ++id;
-          break;
-        case 1:
-          id = Math.round(Math.random() * length);
-          break;
-        case 2:
-          id = id;
-          break;
-        default: 
-          console.log("无效模式");
-          break;
-      }
-      
-      console.log(id, length, this.playMode);
-
-      this.$store.dispatch("nextSong", id);
+      this.$store.dispatch("nextSong", this.playId);
     },
     play() {
       this.$store.dispatch("changePlayState");
@@ -131,9 +109,6 @@ export default {
       if (!this.isAudioPlay) return this.$store.commit("AUDIO_AUTO_PLAY");
       this.$store.dispatch("changePlayState", true);
       this.audioDOM.play();
-
-      var totalT = this.audioDOM.duration;
-      console.log(totalT);
     }
   }
 };

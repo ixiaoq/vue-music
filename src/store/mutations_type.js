@@ -17,10 +17,10 @@ export const ADD_DOM = "ADD_DOM";
 export const IS_PLAYING = "IS_PLAYING";
 // 获取当前播放列表
 export const GET_PLAY_LIST = "GET_PLAY_LIST";
-// audio当前播放时间
-export const AUDIO_CURRENT_TIME = "AUDIO_CURRENT_TIME";
 // 播放列表-播放单曲
 export const PLAY_SINGLE = "PLAY_SINGLE";
+// 播放时间
+export const AUDIO_CURRENT_TIME = "AUDIO_CURRENT_TIME";
 // 播放所有歌曲
 export const PLAY_ALL_SONG = "PLAY_ALL_SONG";
 // 下一曲
