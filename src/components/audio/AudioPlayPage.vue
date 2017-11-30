@@ -16,7 +16,7 @@
           <div class="lyric">歌词</div>
         </swiper-slide>
         <!-- Optional controls -->
-        <div class="swiper-pagination"  slot="pagination"></div>
+        <div class="swiper-pagination" slot="pagination"></div>
       </swiper> 
     </div>
 
@@ -27,7 +27,7 @@
             <span class="dot" @click="setPlayTime()"></span>
           </span>
         </div>
-        <span class="start-time">{{ currentT.ct  }} </span>
+        <span class="start-time">{{ currentT.ct }} </span>
         <span class="end-time">{{ currentT.tt }}</span>
       </div>
       <div class="songs-info">
@@ -36,7 +36,7 @@
       </div>
       <div class="control-interface">
         <div class="top">
-          <div><img src="../../assets/icon-shangyiqu.png"></div>
+          <div><img src="../../assets/icon-shangyiqu.png" @click="up()"></div>
           <div>
             <img src="../../assets/icon-play.png" v-if="!isPlay" @click="play()">
 				    <img src="../../assets/icon-pause.png" v-if="isPlay" @click="play()">
@@ -123,6 +123,9 @@ export default {
     back() {
       this.$store.commit("GLOBAL_AUDIO_STATE", 1);
     },
+    up() {
+      this.$store.commit("UP_SONG", this.playId);
+    },
     next() {
       this.$store.dispatch("nextSong", this.playId);
     },
@@ -131,7 +134,7 @@ export default {
       this.isPlay ? this.audioDOM.play() : this.audioDOM.pause();
     },
     setPlayTime() {
-      this.audioDOM.currentTime = 200;
+      this.audioDOM.currentTime = 255;
     },
     changeMode() {},
     isVolume() {}
@@ -141,14 +144,16 @@ export default {
 
 <style lang="less" scope>
 .audio-paly-page {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
+  margin: auto;
   z-index: 98;
   display: flex;
   flex-direction: column;
+  max-width: 7.5rem;
   font-size: 0.2rem;
   background: white;
 
@@ -182,7 +187,6 @@ export default {
       height: 100%;
 
       img {
-        width: auto;
         height: 100%;
       }
       .swipe-item {

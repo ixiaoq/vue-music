@@ -88,11 +88,24 @@ export default {
       var currentT = this.audioDOM.currentTime;
       var w = currentT / totalT * 100;
       document.getElementById("time-line").style.width = w + "%";
+
+      if (this.playMode == 2) {
+        this.audioDOM.loop = true;
+      } else {
+        this.audioDOM.loop = false;
+      }
+      this.playMusic();
       
       this.$store.commit("AUDIO_CURRENT_TIME", {currentT, totalT});
     },
     // 下一曲
     ended() {
+      this.$store.commit("AUDIO_CURRENT_TIME", {currentT: 0, totalT: 0});
+      
+      if (this.playMode == 2) {
+        return;
+      }
+
       this.$store.dispatch("nextSong", this.playId);
     },
     play() {

@@ -100,7 +100,8 @@ export default {
       this.audioList = arr;
 		},
 		playSingle (id) {
-			this.getList();
+      this.getList();
+      this.$store.commit("PLAY_INDEX_SONG", 0);
 			this.$store.dispatch("playSingle", this.audioList[id]);
 		},
 		playAll () {
@@ -121,7 +122,7 @@ export default {
   overflow-y: auto;
 
   .back {
-    position: absolute;
+    position: fixed;
     left: 0.1rem; top: 0.1rem;
     display: flex;
     justify-content: center;

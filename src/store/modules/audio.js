@@ -55,27 +55,53 @@ const mutations = {
         state.playMusicList = data;
 		state.playId = 0;
     },
-    [types.NEXT_SONG] (state, index) {
+    [types.UP_SONG] (state, index) {
         var id = state.playId;
+        state.isPlay = false;
         var length = state.playMusicList.length;
         // 0顺序播放   1随机播放    2单曲循环
         
         switch (state.audioPlayMode) {
           case 0:
-            id = id >= length ? 0 : ++id;
+            id = id <= 0 ? (length-1) : --id;
             break;
           case 1:
             id = Math.round(Math.random() * (length - 0 + 1) + 0);
             break;
           case 2:
-            id = id;
+            id = id <= 0 ? (length-1) : --id;
             break;
           default: 
             console.log("无效模式");
             break;
         }
-        console.log(id);
         state.playId = id;
+    },
+    [types.NEXT_SONG] (state, index) {
+        var id = state.playId;
+        state.isPlay = false;
+        var length = state.playMusicList.length;
+        // 0顺序播放   1随机播放    2单曲循环
+        
+        switch (state.audioPlayMode) {
+          case 0:
+            id = id >= (length-1) ? 0 : ++id;
+            break;
+          case 1:
+            id = Math.round(Math.random() * (length - 0 + 1) + 0);
+            break;
+          case 2:
+            id = id >= (length-1) ? 0 : ++id;
+            break;
+          default: 
+            console.log("无效模式");
+            break;
+        }
+        state.playId = id;
+    },
+    [types.PLAY_INDEX_SONG] (state, index) {
+        state.isPlay = false;
+        state.playId = index;
     },
     [types.AUDIO_SONGS_LIST_STATE] (state) {
         state.audioListPageState = !state.audioListPageState;

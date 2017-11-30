@@ -44,7 +44,7 @@
     font-size: 100px;
   }
   body {
-    max-width: 750px;
+    max-width: 7.5rem;
     margin: 0 auto;
   }
 

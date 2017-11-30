@@ -23,8 +23,12 @@ export const PLAY_SINGLE = "PLAY_SINGLE";
 export const AUDIO_CURRENT_TIME = "AUDIO_CURRENT_TIME";
 // 播放所有歌曲
 export const PLAY_ALL_SONG = "PLAY_ALL_SONG";
+// 上一曲
+export const UP_SONG = "UP_SONG";
 // 下一曲
 export const NEXT_SONG = "NEXT_SONG";
+// 播放指定歌曲
+export const PLAY_INDEX_SONG = "PLAY_INDEX_SONG";
 // 初始化自动播放
 export const AUDIO_AUTO_PLAY = "AUDIO_AUTO_PLAY";
 // 显示歌曲列表

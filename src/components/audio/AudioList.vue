@@ -64,7 +64,8 @@ export default {
   methods: {
     // 播放当前歌曲
     playCurrentMusic(id) {
-			this.$store.dispatch("nextSong", id);
+      this.$store.commit("AUDIO_CURRENT_TIME", {currentT: 0, totalT: 0});
+      this.$store.commit("PLAY_INDEX_SONG", id);
     },
     // 关闭播放列表
     closeList() {
