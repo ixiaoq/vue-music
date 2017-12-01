@@ -144,16 +144,14 @@ export default {
 
 <style lang="less" scope>
 .audio-paly-page {
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  margin: auto;
   z-index: 98;
   display: flex;
   flex-direction: column;
-  max-width: 7.5rem;
   font-size: 0.2rem;
   background: white;
 
