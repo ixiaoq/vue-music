@@ -94,8 +94,7 @@ export default {
       } else {
         this.audioDOM.loop = false;
       }
-      this.playMusic();
-      
+      this.$store.commit("AUDIO_AUTO_PLAY");
       this.$store.commit("AUDIO_CURRENT_TIME", {currentT, totalT});
     },
     // 下一曲

@@ -34,8 +34,7 @@
         <p class="songs-name">{{ playMusicList[playId].songName }}</p>
         <p class="singer">{{ playMusicList[playId].singerName }}</p>
       </div>
-      <div class="control-interface">
-        <div class="top">
+      <div class="control-play">
           <div><img src="../../assets/icon-shangyiqu.png" @click="up()"></div>
           <div>
             <img src="../../assets/icon-play.png" v-if="!isPlay" @click="play()">
@@ -43,12 +42,11 @@
           </div>
           <div><img src="../../assets/icon-xiayiqu.png" @click="next()"></div>
         </div>
-        <div class="bot">
+      <div class="control-icon">
           <div><img src="../../assets/icon-SEQUENTIAL.png" @click="changeMode()"></div>
-          <div><img src="../../assets/icon-like.png"></div>
+          <div><img src="../../assets/icon-like.png" @click="myCollect()"></div>
           <div><img src="../../assets/icon-volue-right.png" @click="isVolume()"></div>
-          <div><img src="../../assets/icon-list.png"></div>
-        </div>
+          <div><img src="../../assets/icon-list.png" @click="openList()"></div>
       </div>
     </div>
 
@@ -136,8 +134,19 @@ export default {
     setPlayTime() {
       this.audioDOM.currentTime = 255;
     },
-    changeMode() {},
-    isVolume() {}
+    changeMode() {
+      alert("不要按啦!");
+    },
+    myCollect() {
+      alert('不管用!');
+    },
+    isVolume() {
+      alert("我就不静音!");
+    },
+    openList() {
+      alert('其实你打开了!');
+      this.$store.commit("AUDIO_SONGS_LIST_STATE");
+    }
   }
 };
 </script>
@@ -177,7 +186,6 @@ export default {
   }
 
   .top-bar {
-    position: relative;
     flex: 1;
 
     .mySwipe {
@@ -197,6 +205,7 @@ export default {
     }
   }
 
+  // 控制部分
   .control-bar {
     flex: 0 0 2.5rem;
   }
@@ -259,45 +268,39 @@ export default {
     }
   }
 
-  .control-interface {
+  .control-play {
     display: flex;
-    flex-direction: column;
-
-    .top {
-      display: flex;
-      justify-content: center;
-      height: 1rem;
-      padding: 0.28rem 0;
-      div {
-        flex: 1;
-        &:first-of-type {
-          text-align: right;
-        }
-        &:last-of-type {
-          text-align: left;
-        }
+    justify-content: center;
+    height: 1rem;
+    div {
+      flex: 1;
+      padding: 0.25rem 0;
+      &:first-of-type {
+        text-align: right;
       }
-      img {
-        display: inline-block;
-        width: auto;
-        height: 100%;
+      &:last-of-type {
+        text-align: left;
       }
     }
-    .bot {
-      display: flex;
-      flex-direction: row;
-      height: 0.5rem;
+    img {
+      display: inline-block;
+      width: auto;
+      height: 100%;
+    }
+  }
+  .control-icon {
+    display: flex;
+    height: 0.5rem;
+    border-top: 0.01rem solid #f0f0f0;
+    div {
       padding: 0.1rem 0;
-      border-top: 0.01rem solid #f0f0f0;
-      div {
-        flex: 1;
-      }
+      flex: 1;
+    }
 
-      img {
-        display: inline-block;
-        width: auto;
-        height: 100%;
-      }
+    img {
+      display: inline-block;
+      width: auto;
+      height: 100%;
     }
   }
 }
