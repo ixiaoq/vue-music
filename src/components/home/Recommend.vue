@@ -82,18 +82,16 @@ export default {
   }
   
   .swiper-pagination {
-    height: 0.2rem;
     display: flex;
     justify-content: center;
-    bottom: 0 !important;
   }
 	
 	.hot-list {
 		h3 {
-			height: 50px;
-			line-height: 50px;
+			height: 1rem;
+			line-height: 1rem;
       font-weight: normal;
-      font-size: 0.16rem;
+      font-size: 0.32rem;
 		}
 
 		.list-content {
@@ -103,22 +101,22 @@ export default {
       
 			.hotdiss-item {
 				width: 32%;
-				margin-bottom: 10px;
+				margin-bottom: 0.20rem;
 
 				.item-listennum {
 					position: relative;
 					display: flex;
 					.listennum {
-            padding: 0 5px;
-            font-size: 0.12rem;
+            padding: 0 0.1rem;
+            font-size: 0.24rem;
 					}
 				}
 
 				.item-tag {
 					display: block;
-					padding: 0 5px;
+					padding: 0 0.1rem;
 					text-align: left;
-					font-size: 0.14rem;
+					font-size: 0.28rem;
 				}
 				.item-dissname{
 					text-overflow: ellipsis;
@@ -126,7 +124,10 @@ export default {
 					white-space: nowrap;
 				}
 				.item-author {
-					font-size: 12px;
+          font-size: 0.24rem;
+          text-overflow: ellipsis;
+					overflow: hidden;
+					white-space: nowrap;
 				}
 			}
 		}

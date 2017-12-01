@@ -8,8 +8,8 @@
 			<img v-lazy="rankData.picAlbum" alt="">
 		</div>
 
-		<div class="title">
-			<div class="play_all" @click="playAll()">播放<br>全部</div>
+		<div class="title" :style="{'color': color}">
+			<div class="play_all" @click="playAll()"></div>
 			<h3>{{ rankData.title }}</h3>
 			<p>{{ rankData.updateTime }}</p>
 		</div>
@@ -24,7 +24,7 @@
 			</div>
 		</div>
 
-		<div class="footer"></div>
+		<div class="empty_scroll"></div>
   </div>
 </template>
 
@@ -117,23 +117,22 @@ export default {
 .rank-song-list {
   position: relative;
   height: 100%;
-  font-size: 0.16rem;
+  font-size: 0.32rem;
   text-align: left;
   overflow-y: auto;
 
   .back {
     position: fixed;
-    left: 0.1rem; top: 0.1rem;
+    left: 0.2rem; top: 0.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 0.4rem;
-    height: 0.4rem;
+    width: 0.8rem;
+    height: 0.8rem;
     color: #fff;
     background: rgba(255, 255, 255,.5);
     border-radius: 50%;
     box-shadow: 0 0 0.10rem 0.05rem rgba(0, 0, 0,.2);
-
     img {
       width: 90%;
       height: 90%;
@@ -141,35 +140,42 @@ export default {
   }
 
   .rank-pic {
-    height: 3.5rem;
+    height: 7.5rem;
     overflow: hidden;
   }
 
   .title {
     position: relative;
-    height: 1rem;
-    margin-top: -1rem;
-    padding: 0.1rem;
+    height: 2rem;
+    margin-top: -2rem;
+    padding: 0.2rem;
     color: #fff;
-    background-image: -webkit-linear-gradient(
-      top,
-      transparent,
-      currentColor 100%
-    );
+    background-image: -webkit-linear-gradient(top, transparent, currentColor 100%);
     h3 {
-      height: 0.4rem;
-      line-height: 0.4rem;
-      font-size: 0.2rem;
+      height: 0.8rem;
+      font-size: 0.50rem;
+      color: #fff;
     }
     p {
+      font-size: 0.38rem;
+      color: #fff;
 		}
 		.play_all {
+      position: relative;
 			float: right;
-			width: 0.50rem;
-			height: 0.50rem;
+			width: 1rem;
+      height: 1rem;
+      border: 0.02rem solid #fff;
 			border-radius: 50%;
-			background: #000;
-			text-align: center;
+      text-align: center;
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0.32rem; top: 0.18rem; 
+        display: block;
+        border: 0.30rem solid transparent;
+        border-left: 0.50rem solid #fff;
+      }
 		}
   }
   .songs-content {
@@ -184,27 +190,26 @@ export default {
         border-bottom: none;
       }
       .num {
-        width: 0.4rem;
+        width: 0.8rem;
         text-align: center;
       }
       .content {
         flex: 1;
         text-align: left;
-        margin-left: 0.1rem;
-        padding: 0.08rem 0.1rem 0.08rem 0;
-        border-bottom: 1px solid #fff;
+        padding: 0.15rem 0.2rem 0.15rem 0;
+        border-bottom: 0.01rem solid #fff;
         .name {
-          margin-bottom: 0.05rem;
-          font-size: 0.18rem;
+          margin-bottom: 0.1rem;
+          font-size: 0.32rem;
         }
         .singer {
-          font-size: 0.14rem;
+          font-size: 0.24rem;
         }
       }
     }
   }
-  .footer {
-    height: 0.5rem;
+  .empty_scroll {
+    height: 1rem;
   }
 }
 </style>

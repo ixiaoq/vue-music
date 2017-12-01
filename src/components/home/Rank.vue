@@ -42,41 +42,43 @@ export default {
 
 <style lang="less" scope>
 .rank {
-  padding: 0.10rem;
+  padding: 0.20rem;
   text-align: left;
-  font-size: 0.14rem;
   background: #eee;
 
   .rank-item {
     display: flex;
-    margin-bottom: 0.10rem;
-    border-radius: 0.08rem;
+    margin-bottom: 0.20rem;
+    border-radius: 0.1rem;
     background: #fff;
     overflow: hidden;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
 
     .rank-img {
       position: relative;
-      width: 1rem;
-      height: 1rem;
+      width: 1.8rem;
+      height: 1.8rem;
       img {
         height: 100%;
         width: 100%;
       }
       span {
         position: absolute;
-        left: 5px;
+        left: 0.10rem;
         bottom: 0;
         color: #fff;
-        line-height: 20px;
-        height: 20px;
-        font-size: 12px;
+        line-height: 0.40rem;
+        height: 0.40rem;
+        font-size: 0.24rem;
         text-align: right;
       }
     }
     .rnak-content {
       flex: 1;
       display: flex;
-      padding: 0.05rem 0.1rem 0;
+      padding: 0.1rem 0.2rem;
       text-align: left;
       justify-content: space-around;
       flex-direction: column;
@@ -86,9 +88,9 @@ export default {
         color: #000000;
       }
       .song-item {
-        height: 0.20rem;
-        line-height: 0.20rem;
-        font-size: 0.14rem;
+        height: 0.28rem;
+        line-height: 0.28rem;
+        font-size: 0.24rem;
         overflow: hidden;
         
         .singername {

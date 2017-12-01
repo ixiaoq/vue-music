@@ -2,7 +2,7 @@
   <div class="page-home">
     <v-search></v-search>
 		<div class="main">
-			<div class="top_scroll"></div>
+			<div class="head_empty_srcoll"></div>
 			<v-tabbar>
 				<v-tabbar-item id="recommend" title="推荐"></v-tabbar-item>
 				<v-tabbar-item id="rank" title="排行榜"></v-tabbar-item>
@@ -11,13 +11,13 @@
 
 			<router-view></router-view>
 			
-			<div class="bottom_srcoll"></div>
+			<div class="footer_empty_srcoll"></div>
 		</div>
   </div>
 </template>
 
 <script>
-import vSearch from "./home/Search";
+import vSearch from "./search/Search";
 import vTabbar from "./home/Tabbar";
 import vTabbarItem from "./home/TabbarItem";
 
@@ -48,15 +48,15 @@ export default {
 	overflow-y: auto;
 	
 	.main {
-		.top_scroll {
-			height: 55px;
+		.head_empty_srcoll {
+			height: 1rem;
 		}
 
 		nav {
 			display: flex;
-			height: 50px;
-			line-height: 50px;
-			font-size: 0.16rem;
+			height: 1rem;
+			line-height: 1rem;
+			font-size: 0.32rem;
 			div {
 				flex: 1;
 				a {
@@ -70,8 +70,8 @@ export default {
 			}
 		}
 
-		.bottom_srcoll {
-			height: 50px;
+		.footer_empty_srcoll {
+			height: 1rem;
 		}
 	}
 	

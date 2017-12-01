@@ -41,7 +41,7 @@ export default {
   a {
     display: block;
     position: relative;
-    color: #999;
+		color: #999;
 
     &.active {
       color: red;

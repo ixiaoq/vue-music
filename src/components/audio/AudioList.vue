@@ -2,14 +2,14 @@
   <div class="audio-list" v-show="isAudioList">
 		<header>
 			<div class="playing_mode" @click="chagnePlayMode(mode)">
-				<img src="../../assets/icon-SEQUENTIAL.png">
+				<i :class="'mode__' + mode"></i>
 			</div>
 			<p>{{ playModeText[mode] }}</p>
 			<div class="finish" @click="closeList()">确定</div>
 		</header>
 		
 		<section class="audio-song-container">
-			<div class="h-empty"></div>
+			<div class="head-empty-scroll"></div>
 
 			<ul class="audio-song-list">
 				<li class="song-item" 
@@ -25,7 +25,7 @@
 				</li>
 			</ul>
 
-			<div class="f-empty"></div>
+			<div class="footer-empty-scroll"></div>
 		</section>
 		
   </div>
@@ -101,24 +101,40 @@ header {
   z-index: 99;
   display: flex;
   width: 100%;
-  line-height: 0.3rem;
-  padding: 0.05rem 0;
-  font-size: 0.16rem;
+  line-height: 0.6rem;
+  padding: 0.1rem 0;
+  font-size: 0.32rem;
   overflow: hidden;
   border-bottom: 0.01rem solid #f0f0f0;
   background: white;
 
   .playing_mode {
-    width: 0.3rem;
-    margin-left: 0.1rem;
+    width: 0.6rem;
+    margin-left: 0.2rem;
+    i {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    .mode__0 {
+      background-image: url(../../assets/icon-RANDOM.png);
+    }
+    .mode__1 {
+      background-image: url(../../assets/icon-SEQUENTIAL.png);
+    }
+    .mode__2 {
+      background-image: url(../../assets/icon-RANDOM.png);
+    }
   }
   p {
     flex: 1;
-    margin-left: 0.08rem;
+    margin-left: 0.2rem;
     text-align: left;
   }
   .finish {
-    padding: 0 0.1rem;
+    padding: 0 0.2rem;
   }
 }
 
@@ -129,33 +145,33 @@ header {
   overflow-y: auto;
 
   .audio-song-list {
-    padding: 0.05rem 0;
+    // padding: 0.1rem 0;
     text-align: left;
+    background: #f0f0f0;
 
     .song-item {
       position: relative;
       display: flex;
       flex-direction: column;
-      padding: 0.05rem 0.1rem;
+      padding: 0.1rem 0.2rem;
       border-bottom: 0.01rem dotted #fff;
-      background: #f0f0f0;
       &:last-of-type {
         border-bottom: none;
       }
       .song-name {
         width: 90%;
-        height: 0.2rem;
-        line-height: 0.2rem;
-        font-size: 0.18rem;
+        height: 0.4rem;
+        line-height: 0.4rem;
+        font-size: 0.32rem;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
       }
       .song-singer {
         width: 90%;
-        height: 0.2rem;
-        line-height: 0.2rem;
-        font-size: 0.14rem;
+        height: 0.4rem;
+        line-height: 0.4rem;
+        font-size: 0.24rem;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -164,23 +180,23 @@ header {
         position: absolute;
         top: 0;
         bottom: 0;
-        right: 0.15rem;
+        right: 0.20rem;
         margin: auto 0;
-        width: 0.15rem;
-        height: 0.2rem;
+        width: 0.3rem;
+        height: 0.3rem;
       }
     }
     .active {
-      border-left: 0.02rem solid red;
+      border-left: 0.05rem solid red;
       background: #fff;
     }
   }
 }
 
-.h-empty {
-  height: 0.4rem;
+.head-empty-scroll {
+  height: 0.81rem;
 }
-.f-empty {
-  height: 0.5rem;
+.footer-empty-scroll {
+  height: 1rem;
 }
 </style>

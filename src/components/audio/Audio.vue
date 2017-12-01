@@ -10,11 +10,10 @@
 				<p class="name">{{ playMusicList[playId].singerName }}</p>
 			</div>
 			<div class="music-play" @click.stop="play()">
-				<img src="../../assets/icon-play.png" v-if="!isPlay">
-				<img src="../../assets/icon-pause.png" v-if="isPlay">
+        <i :class="!isPlay ? 'icon-play' : 'icon-pause'"></i>
 			</div>
 			<div class="music-list" @click.stop="openList()">
-				<img src="../../assets/icon-list.png">
+				<i class="icon-open"></i>
 			</div>
 
 			<audio :src="playMusicList[playId].songUrl"
@@ -132,7 +131,7 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 0.50rem;
+  height: 1rem;
   z-index: 99;
   overflow: hidden;
   background: #ddd;
@@ -141,45 +140,62 @@ export default {
     position: absolute;
     left: 0; top: 0;
     width: 0;
-    height: 0.01rem;
+    height: 0.02rem;
     background: red;
-    box-shadow: 0 0 0.05rem rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 0.1rem rgba(255, 255, 255, 0.6);
   }
 
   .mini-face {
     display: flex;
     height: 100%;
-    padding: 0.05rem 0.10rem;
+    padding: 0.10rem;
 
     .music-img {
-      width: 0.40rem;
+      flex: 0 0 0.80rem;
       border-radius: 50%;
       box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
       overflow: hidden;
     }
     .music-name {
-      padding: 0 10px;
+      padding: 0 0.20rem;
+      max-width: 4.6rem;
       flex: 1;
       text-align: left;
       .title {
         width: 100%;
-        margin-bottom: 3px;
-        font-size: 14px;
+        margin-bottom: 0.06rem;
+        font-size: 0.28rem;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
       }
       .name {
-        font-size: 12px;
+        font-size: 0.24rem;
       }
     }
+    i {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
     .music-play {
-      width: 0.40rem;
-      padding: 0.05rem;
+      flex: 0 0 0.80rem;
+      padding: 0.10rem;
+      .icon-play {
+        background-image: url(../../assets/icon-play.png);
+      }
+      .icon-pause {
+        background-image: url(../../assets/icon-pause.png);
+      }
     }
     .music-list {
-      width: 0.40rem;
+      flex: 0 0 0.80rem;
       margin-left: 0.30rem;
+      .icon-open {
+        background-image: url(../../assets/icon-list.png);
+      }
     }
   }
 }
