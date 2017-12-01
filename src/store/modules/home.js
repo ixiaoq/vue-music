@@ -2,7 +2,7 @@ import { request } from "../../api/api"
 import * as types from '../mutations_type'
 
 const state = {
-  honePageState: "recommend",
+  honePageState: "rank",
   homeData: {
     focus: [],
     hotdiss: [],
