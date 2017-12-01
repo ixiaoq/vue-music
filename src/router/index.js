@@ -34,11 +34,11 @@ export default new Router({
 
     {
       path: '/',
-      redirect: "/home/recommend"
+      redirect: "/home/rank"
     },
     {
       path: '*',
-      redirect: "/home/recommend"
+      redirect: "/home/rank"
     }
   ]
 })
