@@ -7,7 +7,7 @@
       </div>
       <div class="rnak-content">
         <p class="title">{{ item.topTitle }}</p>
-        <div class="song-item txt_hide" 
+        <div class="song-item" 
           v-for="( song, index ) in item.songList" :key="song.id">
           {{ index + 1 }} {{ song.songname }} - <span class="singername">{{ song.singername }}</span>
         </div>
@@ -83,18 +83,23 @@ export default {
       justify-content: space-around;
       flex-direction: column;
       .title {
-        font-size: 16px;
+        font-size: 0.36rem;
+        height: 0.50rem;
+        line-height: 0.50rem;
         font-weight: normal;
         color: #000000;
       }
       .song-item {
-        height: 0.28rem;
-        line-height: 0.28rem;
-        font-size: 0.24rem;
+        width: 4.8rem;
+        height: 0.30rem;
+        line-height: 0.30rem;
+        font-size: 0.28rem;
         overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         
         .singername {
-          font-size: 0.12rem;
+          font-size: 0.24rem;
           color: #666;
         }
       }

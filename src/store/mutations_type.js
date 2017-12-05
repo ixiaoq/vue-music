@@ -39,3 +39,6 @@ export const GLOBAL_AUDIO_STATE = "GLOBAL_AUDIO_STATE";
 export const AUDIO_PLAY_PAGE_STATE = "AUDIO_PLAY_PAGE_STATE";
 // 播放模式
 export const AUDIO_PLAY_MODE = "AUDIO_PLAY_MODE";
+
+// 搜索
+export const GET_SEARCH = "GET_SEARCH";

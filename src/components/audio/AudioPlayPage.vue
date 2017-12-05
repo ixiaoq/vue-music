@@ -196,8 +196,7 @@ export default {
   }
 
   .top-bar {
-    flex: 1;
-
+    flex: 0 0 7.5rem;
     .mySwipe {
       width: 100%;
       height: 100%;
@@ -217,12 +216,14 @@ export default {
 
   // 控制部分
   .control-bar {
-    flex: 0 0 5.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .time-line {
     position: relative;
-    height: 0.5rem;
+    flex: 0 0 0.5rem;
     padding-right: 0.3rem;
     font-size: 0.28rem;
     .t-d {
@@ -270,23 +271,28 @@ export default {
   }
 
   .songs-info {
-    height: 1.5rem;
+    flex: 1;
     .songs-name {
-      height: 1rem;
-      line-height: 1rem;
+      display: flex;
+      align-items: center;
+      height: 50%;
       font-size: 0.40rem;
+      justify-content: center;
     }
     .singer {
-      height: 0.5rem;
+      display: flex;
+      align-items: center;
+      height: 50%;
       font-size: 0.32rem;
+      justify-content: center;
     }
   }
 
   .control-play {
     display: flex;
     justify-content: center;
-    height: 2.5rem;
-    padding: 0.75rem 0;
+    flex: 0 0 1.8rem;
+    padding: 0.5rem 0;
     div {
       flex: 1;
       &:first-of-type {
@@ -311,7 +317,7 @@ export default {
   }
   .control-icon {
     display: flex;
-    height: 1rem;
+    flex: 0 0 1rem;
     border-top: 0.01rem solid #f0f0f0;
     div {
       padding: 0.1rem 0;

@@ -124,6 +124,7 @@ export default {
   .back {
     position: fixed;
     left: 0.2rem; top: 0.2rem;
+    z-index: 99;
     display: flex;
     justify-content: center;
     align-items: center;

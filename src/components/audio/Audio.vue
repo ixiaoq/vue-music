@@ -164,7 +164,7 @@ export default {
       .title {
         width: 100%;
         margin-bottom: 0.06rem;
-        font-size: 0.28rem;
+        font-size: 0.32rem;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
